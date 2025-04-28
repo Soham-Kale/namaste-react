@@ -1,42 +1,32 @@
-
-{/* <div id="parent">
-        <div id="child">
-            <h1>I'm h1 tag</h1>
-            <h2>I'm h2 tag</h2>
-        </div>
-        <div id="child2">
-            <h1>I'm h1 tag</h1>
-            <h2>I'm h2 tag</h2>
-        </div>
-    </div> 
-*/}
-
-//  ReactElement(Object) => HTML(Browser Understand)
-
-// const heading = React.createElement(
-//     "h1", 
-//     { id: "heading" }, 
-//     "Hello, World! from React"
-// );
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement("div", {id: "parent"}, [
-    React.createElement("div", {id: "child"}, [
-        React.createElement("h1", {},  "I'm h1 tag"),
-        React.createElement("h2", {},  "I'm h2 tag")
-    ]),
-    React.createElement("div", {id: "child2"}, [
-        React.createElement("h1", {},  "I'm h1 tag"),
-        React.createElement("h2", {},  "I'm h2 tag")
-    ])
-])
+const heading = React.createElement(
+  "h1",
+  { id: "heading" },
+  "Namaste React 🚀"
+);
+console.log(heading);
 
-// JSX
+// JSX ( transpiled before it reaches the JS ) - PARCEL - Babel
+// JSX => React.createElement => React Element => JS Object => HTMLElement(render)
 
-console.log(parent);
+const elem = <h3>React Element</h3>
+
+const title = (
+    <h1 id="heading" tabIndex="3">
+        Namaste React from JSX🚀
+        {elem}
+    </h1>
+);
+
+// Component Composition
+const HeadingComponent = () => ( 
+  <div id="container">
+    {title}
+    <h1 className="heading">Namaste React from Functional Components </h1>
+  </div>
+)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(parent);
+root.render(<HeadingComponent/>);
